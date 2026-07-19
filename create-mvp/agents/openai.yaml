@@ -1,0 +1,4 @@
+interface:
+  display_name: "Create MVP"
+  short_description: "Define un MVP mediante un flujo SDD guiado"
+  default_prompt: "Usa $create-mvp para crear o retomar la especificación SDD de mi nuevo proyecto."
