@@ -5,7 +5,7 @@ description: Crear, completar o retomar la especificación previa al desarrollo 
 
 # Create MVP
 
-Construir de forma incremental la fuente de verdad de un MVP antes de programar. Preguntar, escribir cada respuesta en el proyecto, mantener un checklist reanudable y detenerse al completar la preparación; no implementar frontend, backend ni infraestructura.
+Construir de forma incremental la fuente de verdad de un MVP antes de programar. Preguntar, escribir cada respuesta en el proyecto, mantener un checklist reanudable y detenerse al completar la preparación; no implementar frontend, backend ni infraestructura, salvo la integración opcional del theme definida en la etapa de diseño y confirmada explícitamente por el usuario.
 
 ## Resolver el proyecto
 
@@ -99,6 +99,8 @@ Crear solo rutas respaldadas por flujos reales. No convertir cada acción CRUD e
 ### Diseño
 
 Preguntar primero sistema visual, referencias, color, tipografía, accesibilidad y densidad. No asumir MUI. Generar paletas MUI y considerar el enlace de Figma de la guía solo si el usuario confirma MUI. Si el diseño se hará en una herramienta externa, documentar decisiones y enlaces; no bloquear la especificación por no poder operar esa herramienta.
+
+Después de crear el theme y guardarlo en `07-design-constraints.md`, inspeccionar si el proyecto contiene un frontend donde pueda integrarse. Si se detecta uno, indicar su ruta y stack y preguntar si el usuario quiere implementar ahora el theme generado o dejarlo para después. No modificar código sin esa confirmación. Si elige implementarlo ahora, seguir `references/design-constraints.md` y limitar los cambios a la configuración y conexión necesarias del theme. Si elige hacerlo después, registrar la decisión en el documento sin bloquear su aprobación. Si no existe un frontend implementable, registrarlo y continuar con la especificación.
 
 ### Stacks
 

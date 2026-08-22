@@ -22,6 +22,25 @@ Crear 2 variantes del theme:
 
 La salida debe estar lista para copiar y pegar en mi archivo de configuración de MUI.
 
+## Integración opcional después de crear el theme
+
+Después de generar y guardar el theme en `docs/mvp/07-design-constraints.md`:
+
+1. Inspecciona el proyecto de forma no destructiva para comprobar si existe un frontend donde pueda integrarse. Busca evidencia concreta como `package.json`, el framework, la estructura de código fuente, las dependencias de MUI y una configuración de theme o provider existente.
+2. Si detectas más de un frontend posible, presenta las rutas encontradas y pide al usuario que elija una antes de modificar código.
+3. Si detectas un único frontend implementable, informa su ruta y stack y pregunta explícitamente: **¿Quieres que implemente ahora el theme generado en este frontend o prefieres dejarlo para después?**
+4. No edites el frontend hasta que el usuario elija implementarlo ahora.
+5. Si el usuario elige implementarlo ahora:
+   - revisa la configuración existente y preserva convenciones, cambios locales y dependencias compatibles;
+   - crea o adapta los archivos de theme y conecta el provider en el punto de entrada adecuado;
+   - limita la modificación a lo necesario para habilitar los modos `light` y `dark` generados;
+   - valida con los comandos disponibles del proyecto, priorizando typecheck, lint o build;
+   - registra en `07-design-constraints.md` la ruta integrada, los archivos modificados y el resultado de la validación.
+6. Si el usuario elige hacerlo después, registra `Implementación del theme: pendiente por decisión del usuario` en `07-design-constraints.md` y continúa. Esta decisión no bloquea la aprobación del documento.
+7. Si no existe un frontend implementable, registra `Implementación del theme: pendiente; no se detectó un proyecto frontend` y continúa sin crear una aplicación nueva ni instalar dependencias. Esto tampoco bloquea la aprobación del documento.
+
+La instrucción de devolver solo código se aplica al contenido generado del theme. La verificación del proyecto, la pregunta de implementación y el resumen de integración forman parte del flujo interactivo de la skill.
+
 ## Parámetros de entrada
 - Color base principal: {COLOR_BASE}
 - Quiero la salida: {CON_TIPADO_O_SIN_TIPADO}
