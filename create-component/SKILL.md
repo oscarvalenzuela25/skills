@@ -36,6 +36,8 @@ XComponent/
 
 - Nombra el componente y carpeta en PascalCase. Hooks en camelCase con prefijo `use`.
 - Si no hay lógica adicional, omite carpetas vacías.
+- `XComponent.jsx`, `styles.js` e `index.js` son obligatorios para cada componente con carpeta propia.
+- Crea `infrastructure/` únicamente cuando haya datos remotos y mantén juntos `services.js` y `useServices.js`.
 
 ### Pattern 2: Firma y traducciones
 
@@ -119,6 +121,22 @@ export const Wrapper = styled.div(({ theme }) => ({
   - `yarn workspace @nala/ui build`
   - Confirmar que Storybook/app no muestren warnings en consola de render/prop-types.
 
+### Pattern 7: Tests de componentes
+
+Si el repositorio tiene una suite de tests, cada componente con lógica debe tener un archivo espejo dentro de `src/tests`:
+
+```text
+src/modules/Users/UserCard/UserCard.jsx
+src/tests/modules/Users/UserCard/UserCard.test.jsx
+```
+
+Se considera lógica el estado local, handlers con efectos, navegación, acceso a stores/contexto, transformaciones condicionales relevantes, error boundaries y consumo de hooks o servicios. Un componente puramente presentacional no requiere test salvo que las instrucciones locales indiquen lo contrario.
+
+- Conserva la misma ruta relativa y base de nombre con el sufijo `.test.jsx` o `.test.js`.
+- Usa el runner y las utilidades ya configuradas en `package.json`; no instales una segunda suite.
+- Prueba comportamiento observable e interacciones, no detalles internos.
+- Si la suite existente configura otra raíz de tests, su configuración y el `AGENTS.md` del repositorio tienen prioridad sobre `src/tests`.
+
 ---
 
 ## Decision Tree
@@ -129,6 +147,7 @@ export const Wrapper = styled.div(({ theme }) => ({
 ¿HTTP o datos remotos? → infrastructure/services.js + infrastructure/useServices.js con React Query y axios instances.
 ¿Usas MUI? → Apóyate en MCP MUI para props/slots y ajusta estilos con Styled Components + theme.
 ¿Texto nuevo? → Añade clave en `src/translations` y úsala con `useTranslate`/`useTranslation`.
+¿Existe suite de tests y el componente tiene lógica? → Crea o actualiza su test espejo en `src/tests`.
 ```
 
 ---
@@ -232,6 +251,7 @@ export const useCreateItem = () => {
 ```bash
 npm run lint   # linting del proyecto
 npm run build  # asegura que el build de producción pasa
+npm run test   # si el repositorio define una suite de tests
 yarn workspace @nala/ui typecheck  # validar tipos del paquete UI
 yarn workspace @nala/ui build      # regenerar dist del paquete UI
 ```
