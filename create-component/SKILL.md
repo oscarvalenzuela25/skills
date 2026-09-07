@@ -87,7 +87,26 @@ export const Wrapper = styled.div(({ theme }) => ({
 - `DELETE`: el handler debe comenzar con `delete`.
   - Ejemplo: `deleteNotificationTemplate`.
 
-### Pattern 5: Guardrails Anti-Warnings (React)
+### Pattern 5: Manejo de estados de carga con TanStack Query (isLoading, isFetching, isMutating)
+
+Al crear un nuevo componente o modificar uno existente que consuma o mute datos con TanStack Query, la gestión de estados de carga se rige estrictamente por la naturaleza del componente:
+
+1. **Paneles informativos y objetos que representan datos (NO accionables / al hacer clic no pasa nada):**
+   - Aplica a tablas, paneles informativos, tarjetas de métricas, listas y contenedores de visualización de datos.
+   - **`isLoading` (primer fetch inicial sin datos en caché):**
+     - Debe mostrar un estado de carga completo o skeleton inicial.
+   - **`isFetching` o `isMutating` (revalidación con datos ya presentes en caché o mutación en proceso):**
+     - **PROHIBIDO** volver a mostrar skeletons o desmontar el contenido visible, ya que produce parpadeos molestos y estropea la experiencia de usuario.
+     - Se debe utilizar un **soft loading** o un representador sutil de carga (ejemplo: un `LinearProgress` discreto en la cabecera, un spinner diminuto en la barra de herramientas, o una ligera opacidad) que **no limite ni oculte la información anterior ni rompa la UI**. También es completamente válido **no alterar la UI** si no aporta valor.
+
+2. **Elementos accionables e interactivos (Accionables / al interactuar generan una acción o evento):**
+   - Aplica a botones, inputs, menús contextuales/de acciones, selectores, switches, checkboxes y controles de formulario.
+   - **`isLoading`, `isFetching` o `isMutating` (cualquier petición HTTP en proceso):**
+     - Cualquiera de estos 3 estados **debe dejar al componente en estado de carga (`loading`) o en estado deshabilitado (`disabled`)** (ejemplo: `disabled={isLoading || isFetching || isMutating}` o `disabled={isPending}`).
+     - **Regla estricta:** Ningún elemento accionable o input debe permitir interacción mientras haya una petición HTTP o mutación en vuelo, evitando dobles envíos, clics concurrentes o estados inconsistentes.
+     - Los accionables e inputs **nunca** usan skeletons.
+
+### Pattern 6: Guardrails Anti-Warnings (React)
 
 - Keys de listas:
   - Nunca uses objetos como `key` (`key={item}` cuando `item` es objeto termina en `[object Object]`).
@@ -105,7 +124,7 @@ export const Wrapper = styled.div(({ theme }) => ({
   - Si un prop puede llegar `undefined` en runtime, no lo marques `.isRequired`.
   - Define `defaultProps`/fallbacks consistentes para evitar warnings de props faltantes.
 
-### Pattern 6: Guardrails Anti-Warnings (Storybook y `packages/ui/src`)
+### Pattern 7: Guardrails Anti-Warnings (Storybook y `packages/ui/src`)
 
 - Evita JSX en constantes top-level con imports de MUI íconos/componentes.
   - No: `const iconMap = { Star: <StarIcon /> }`
@@ -121,7 +140,7 @@ export const Wrapper = styled.div(({ theme }) => ({
   - `yarn workspace @nala/ui build`
   - Confirmar que Storybook/app no muestren warnings en consola de render/prop-types.
 
-### Pattern 7: Tests de componentes
+### Pattern 8: Tests de componentes
 
 Si el repositorio tiene una suite de tests, cada componente con lógica debe tener un archivo espejo dentro de `src/tests`:
 
@@ -145,6 +164,7 @@ Se considera lógica el estado local, handlers con efectos, navegación, acceso 
 ¿Solo UI? → Crea carpeta XComponent con XComponent.jsx + styles.js + index.js.
 ¿Lógica reusable? → Crea hooks/useXComponent.js (y más hooks específicos si se necesitan).
 ¿HTTP o datos remotos? → infrastructure/services.js + infrastructure/useServices.js con React Query y axios instances.
+¿Manejo de carga TanStack Query? → Paneles/tablas: skeleton solo en isLoading, soft loading en isFetching/isMutating; Accionables/inputs: disabled/loading ante isLoading/isFetching/isMutating.
 ¿Usas MUI? → Apóyate en MCP MUI para props/slots y ajusta estilos con Styled Components + theme.
 ¿Texto nuevo? → Añade clave en `src/translations` y úsala con `useTranslate`/`useTranslation`.
 ¿Existe suite de tests y el componente tiene lógica? → Crea o actualiza su test espejo en `src/tests`.
