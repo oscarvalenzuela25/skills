@@ -1,28 +1,37 @@
 ---
 name: initial-config-frontend
-description: Preparar o auditar la configuración inicial de calidad de un proyecto frontend mediante AGENTS.md raíz y por componente, pruebas unitarias o de integración y Playwright para UI y E2E. Usar al iniciar o normalizar un frontend existente; no usar para ejecutar una prueba puntual ni para proyectos sin frontend.
+description: Preparar o auditar la configuración inicial de calidad de un proyecto frontend mediante DESIGN.md, AGENTS.md raíz y por componente, pruebas unitarias o de integración y Playwright para UI y E2E. Usar al iniciar o normalizar un frontend existente; no usar para ejecutar una prueba puntual ni para proyectos sin frontend.
 ---
 
 # Initial Config Frontend
 
-Dejar un frontend existente listo para que agentes futuros documenten los componentes, prueben la lógica y puedan inspeccionar la UI de forma reproducible. Adaptarse al framework, package manager, monorepo y convenciones detectadas; preservar configuraciones válidas y cambios locales.
+Dejar un frontend nuevo ya iniciado o existente listo para que agentes futuros consulten sus pautas de diseño antes de crear UI, documenten los componentes, prueben la lógica y puedan inspeccionar la UI de forma reproducible. Adaptarse al framework, package manager, monorepo y convenciones detectadas; preservar configuraciones válidas y cambios locales.
 
 ## Resolver el proyecto
 
 1. Inspeccionar el directorio actual y localizar candidatos frontend mediante `package.json`, archivos fuente, scripts y dependencias del framework.
 2. Si hay varios candidatos, mostrar sus rutas y pedir al usuario que elija. Si no hay ninguno, detenerse sin crear una aplicación nueva.
-3. Leer todos los `AGENTS.md` aplicables, `package.json`, lockfiles y configuraciones de tests, build y TypeScript/JavaScript.
+3. Leer todos los `AGENTS.md` aplicables, el `DESIGN.md` existente y las referencias de diseño del proyecto, `package.json`, lockfiles y configuraciones de tests, build y TypeScript/JavaScript.
 4. Revisar el estado de Git antes de editar. No sobrescribir cambios del usuario ni regenerar configuraciones completas cuando pueda hacerse una modificación localizada.
 5. Detectar el package manager por el lockfile y la configuración del workspace. No mezclar npm, pnpm, Yarn o Bun ni crear un lockfile adicional.
 6. Registrar una línea base: framework, lenguaje, estructura de `src`, runner unitario, Playwright, scripts ejecutables y configuración existente.
 
 Una invocación para preparar el proyecto autoriza las instalaciones de desarrollo necesarias descritas aquí, pero no autoriza migraciones de framework, reemplazar un runner funcional, cambiar código de producto sin necesidad ni modificar CI o servicios externos fuera del repositorio.
 
+## Preparar DESIGN.md antes de crear UI
+
+- Crear `DESIGN.md` en la raíz del proyecto frontend si no existe, también al preparar proyectos nuevos. En un monorepo, ubicarlo en la aplicación frontend correspondiente y usar esa ruta al referenciarlo desde un `AGENTS.md` superior.
+- Si ya existe, leerlo y conservar sus decisiones; completar únicamente vacíos pertinentes sin regenerarlo ni duplicarlo. Si las instrucciones remiten a otro documento de diseño vigente, respetar esa fuente y enlazarla desde `DESIGN.md` sin copiar sus reglas.
+- El archivo debe registrar las pautas reales del proyecto: sistema visual y theme/tokens (colores, tipografía, espaciado), componentes y patrones reutilizables, layouts y comportamiento responsive, accesibilidad, estados de interacción y referencias o excepciones aplicables.
+- Derivar el contenido de requisitos confirmados, documentación, theme y componentes existentes. Marcar como pendientes las decisiones aún no definidas; no inventar una identidad visual ni presentar propuestas como aprobadas.
+- Preparar y consultar este archivo antes de comenzar a crear o modificar componentes, páginas, layouts o cualquier otra UI. Mantenerlo actualizado cuando cambien las decisiones de diseño.
+
 ## Configurar AGENTS.md
 
 Leer [references/agents-templates.md](references/agents-templates.md) antes de editar instrucciones.
 
 - Crear o actualizar el `AGENTS.md` de la raíz aplicable al frontend. Preservar sus reglas existentes y mantener una única sección de calidad frontend; actualizarla de forma idempotente en invocaciones posteriores.
+- Incluir una regla explícita y un enlace a `DESIGN.md`: antes de comenzar a crear o modificar UI, leer y aplicar ese archivo y sus referencias pertinentes. Mantener el detalle de diseño en `DESIGN.md`; `AGENTS.md` solo indica la obligación y su ubicación.
 - Escribir comandos reales del proyecto. No dejar placeholders ni afirmar que un comando funciona sin haberlo ejecutado.
 - Incluir la obligación de crear `AGENTS.md` dentro de la carpeta de cada componente nuevo y actualizarlo cuando el componente cambie materialmente.
 - El `AGENTS.md` local del componente debe documentar propósito, responsabilidades y comportamiento observable, contrato público, dependencias o efectos relevantes, cobertura y un historial conciso con fecha ISO `YYYY-MM-DD`.
@@ -111,7 +120,7 @@ Además de las reglas anteriores, registrar:
 1. Verificar que las dependencias y el lockfile corresponden al package manager elegido.
 2. Ejecutar la carga o listado del runner unitario y de Playwright para detectar errores de configuración incluso si todavía no hay una suite completa.
 3. Ejecutar los comandos disponibles y proporcionales al cambio: tests unitarios, typecheck, lint y build. Ejecutar E2E solo cuando el entorno local pueda levantarse sin credenciales o servicios no disponibles.
-4. Revisar que `AGENTS.md` contenga comandos comprobados y que los archivos de configuración no tengan placeholders.
+4. Revisar que `DESIGN.md` exista, conserve las decisiones previas y diferencie pautas confirmadas de pendientes; comprobar que el enlace desde `AGENTS.md` resuelva al documento correcto y exija consultarlo antes de crear o modificar UI. Verificar también los comandos comprobados y la ausencia de placeholders en los archivos de configuración.
 5. Resumir archivos creados o modificados, dependencias agregadas, comandos ejecutados, resultados y cualquier paso pendiente. No declarar éxito para una validación que no se ejecutó.
 
 La configuración debe ser reanudable e idempotente: una segunda ejecución audita y corrige, no duplica secciones, scripts, dependencias ni archivos.

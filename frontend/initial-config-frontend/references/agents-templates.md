@@ -9,6 +9,12 @@ Añadir o actualizar una única sección similar a esta:
 ```markdown
 ## Calidad del frontend
 
+### Diseño antes de implementar UI
+
+- Antes de comenzar a crear o modificar componentes, páginas, layouts o cualquier otra UI, lee y aplica [DESIGN.md](DESIGN.md) y sus referencias pertinentes.
+- Si falta `DESIGN.md`, créalo en la raíz del frontend antes de implementar UI, también en proyectos nuevos. Documenta las pautas existentes y los requisitos confirmados; identifica como pendientes las decisiones sin definir.
+- Conserva las decisiones de un `DESIGN.md` existente y actualízalo cuando cambien las pautas de diseño. Mantén el detalle visual allí y evita duplicarlo en `AGENTS.md`.
+
 ### Documentación por componente
 
 - Cada componente nuevo debe incluir un `AGENTS.md` en la raíz de su carpeta.
@@ -44,7 +50,7 @@ Añadir o actualizar una única sección similar a esta:
 - Los cambios de UI deben revisar teclado, foco, nombres accesibles, contraste y estados responsive aplicables.
 ```
 
-Reemplazar cada `COMANDO_REAL` por un script comprobado. Si una categoría no aplica, escribir `No aplica` con una razón breve; no inventar comandos.
+Reemplazar cada `COMANDO_REAL` por un script comprobado. Si una categoría no aplica, escribir `No aplica` con una razón breve; no inventar comandos. Adaptar el enlace a `DESIGN.md` a su ubicación real respecto del `AGENTS.md`, especialmente en monorepos.
 
 ## AGENTS.md local de un componente
 

@@ -1,4 +1,4 @@
 interface:
   display_name: "Initial Config Frontend"
-  short_description: "Prepara calidad y pruebas del frontend"
-  default_prompt: "Usa $initial-config-frontend para preparar este proyecto frontend con AGENTS.md, pruebas unitarias y Playwright."
+  short_description: "Prepara diseño, calidad y pruebas del frontend"
+  default_prompt: "Usa $initial-config-frontend para preparar este proyecto frontend con DESIGN.md, su consulta obligatoria en AGENTS.md antes de crear UI, pruebas unitarias y Playwright."
