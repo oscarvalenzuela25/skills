@@ -88,6 +88,8 @@ Consultar `references/vault-sources.md` para la procedencia y alcance de las ref
 
 No aceptar una entrevista vacía como completada. Hacer una entrevista adaptativa y escribir respuestas parciales. Incluir rutas de autenticación, recuperación, settings, mantenimiento y 404 solo cuando el producto y su sistema de usuarios las justifiquen.
 
+Si habrá backend (API, funciones, jobs o servicios gestionados), preguntar desde esta etapa si el usuario contempla CI/CD, monitoreo/alertas, logs y seguridad, además del uso previsto y quién lo operará. Si aún no se sabe si necesita backend, registrar esa incertidumbre. Usar [operación de backend](references/backend-operations.md) para adaptar las preguntas y dar continuidad a las decisiones; no esperar al despliegue ni elegir herramientas automáticamente.
+
 ### PRD y dominio
 
 No inventar módulos, dashboards, analytics o integraciones. En PRD V2 reconciliar explícitamente comportamiento y ERD. Usar encabezados Markdown normales en lugar de toggles de Obsidian.
@@ -105,6 +107,8 @@ Después de crear el theme y guardarlo en `07-design-constraints.md`, inspeccion
 ### Stacks
 
 Preguntar primero restricciones y nivel de experiencia. Recomendar una opción mínima coherente con el MVP. Preguntar únicamente categorías aplicables; no obligar al usuario a seleccionar cada herramienta del catálogo. Registrar alternativas descartadas solo cuando expliquen una decisión importante.
+
+Para proyectos con backend, retomar las respuestas operativas de la entrevista en `09-stack-backend.md` y `10-stack-devops.md` según [references/backend-operations.md](references/backend-operations.md). Distinguir CI de despliegue automático, logs de métricas/alertas, y preparación para programar de preparación productiva. Cada decisión diferida tiene impacto, responsable y momento de resolución; no exigir un stack de observabilidad completo para todo MVP.
 
 ### Arquitectura, Kanban y preparación
 

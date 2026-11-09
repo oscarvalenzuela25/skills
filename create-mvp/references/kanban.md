@@ -286,6 +286,8 @@ El ticket se considera terminado cuando:
 - estados borde cubiertos
 - spec actualizada si hubo cambios
 
+Si hay backend, derivar también el trabajo operativo acordado en [backend-operations.md](backend-operations.md), como tickets transversales justificados o criterios de la funcionalidad afectada: CI/CD, salud, logs/correlación, alertas, seguridad y recuperación aplicables. Definir cómo se verificará cada capacidad; no dejar todos esos puntos para un ticket genérico al final ni exigir desplegar cada ruta para cerrar su implementación.
+
 ## Reglas importantes
 
 - No crear tickets basados en módulos amplios si la implementación real nace desde rutas.

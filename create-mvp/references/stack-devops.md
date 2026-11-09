@@ -1,5 +1,9 @@
 # Stack DevOps — Referencia original
 
+## Decisiones operativas antes del hosting
+
+Aplicar [backend-operations.md](backend-operations.md) para convertir lo acordado en estrategia de ramas/promoción, checks, despliegue/rollback, logs, monitoreo/alertas, secretos y recuperación según el riesgo. Separar decisiones implementadas de pendientes/pospuestas/no aplicables; cada pendiente tiene responsable y condición de resolución. Elegir sólo categorías necesarias del catálogo siguiente. Documentar CI o CD no autoriza crear cuentas, contratar servicios ni desplegar.
+
 ## Contenido
 
 - Repositorio, ramas, CI y CD.

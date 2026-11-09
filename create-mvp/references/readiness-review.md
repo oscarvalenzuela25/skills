@@ -23,6 +23,12 @@ Verificar que una persona o agente pueda comenzar la implementación sin inventa
 - Decisiones reversibles pueden quedar `por definir` con responsable o momento de resolución.
 - Observabilidad, pruebas y despliegue tienen un mínimo proporcional al riesgo.
 
+## Operación de proyectos con backend
+
+Verificar la trazabilidad de [backend-operations.md](backend-operations.md): las preguntas de CI/CD, monitoreo, logs y seguridad se respondieron o quedaron pospuestas/no aplicables con motivo. Comprobar decisiones críticas, responsables, momento de resolución y tickets; el mero catálogo de herramientas no basta. Datos duraderos/jobs requieren tratamiento de recuperación cuando corresponda.
+
+Separar preparación para **implementar** de aceptación para **producción**. Un proveedor/dashboard reversible puede quedar pendiente sin bloquear código; una indefinición crítica de permisos, secretos, datos o recuperación sí necesita resolverse. Registrar riesgos y diferimientos sin afirmar que pipelines, health checks o alertas ya funcionan. No añadir una aprobación de infraestructura o contratar herramientas durante esta revisión documental.
+
 ## Estructura del entregable
 
 1. Veredicto: `listo`, `listo con pendientes no bloqueantes` o `no listo`.

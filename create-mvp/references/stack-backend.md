@@ -1,5 +1,9 @@
 # Stack Backend — Referencia original
 
+## Antes de seleccionar herramientas
+
+Retomar las necesidades de operación registradas en la entrevista y aplicar [backend-operations.md](backend-operations.md). Acordar qué debe soportar el backend para salud, diagnóstico, permisos y recuperación; la recopilación, alertas y entrega se concretan en DevOps. Las listas siguientes son alternativas aplicables, no requisitos acumulativos ni prueba de instrumentación implementada.
+
 ## Contenido
 
 - Lenguaje, runtime, framework y arquitectura.

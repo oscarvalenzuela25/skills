@@ -47,4 +47,6 @@
 
 ## Próxima acción recomendada
 
+Si se identifica necesidad de backend, registrar desde la entrevista las decisiones de CI/CD, monitoreo/alertas, logs, seguridad y recuperación aplicable. Concretarlas en `09-stack-backend.md` y `10-stack-devops.md`, y trasladarlas a tickets en `12-kanban.md`; no se marcan implementadas por completar la documentación ni se añade una etapa obligatoria para proyectos sin backend.
+
 Comenzar `01-interview.md` y registrar las respuestas en el documento.

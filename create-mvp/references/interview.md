@@ -58,6 +58,10 @@ Obtener información suficiente para definir el problema, el MVP y sus restricci
 
 No agregar estas capacidades si el producto no utiliza usuarios.
 
+### 8. Operación temprana, cuando haya backend
+
+Preguntar por intención de CI/CD, monitoreo/alertas, logs y seguridad desde esta entrevista, no sólo al elegir hosting. Identificar uso local/piloto/productivo, impacto de fallos o pérdida de datos, presupuesto y responsable de operar. Seguir [backend-operations.md](backend-operations.md) para preguntas adaptativas y trazabilidad; permitir decisiones pospuestas con su momento de resolución sin inventar infraestructura.
+
 ## Estructura del entregable
 
 Redactar `01-interview.md` con:

@@ -29,6 +29,10 @@ Esta carpeta contiene la definición del producto previa al desarrollo. Debe per
 | 12 | `12-kanban.md` | Derivar tickets trazables para implementación |
 | 13 | `13-readiness-review.md` | Verificar si el MVP está listo para programarse |
 
+## Operación de proyectos con backend
+
+Preguntar desde `01-interview.md` si se contempla CI/CD, monitoreo/alertas, logs y seguridad. Concretar el mínimo y los diferimientos en `09-stack-backend.md`/`10-stack-devops.md`, derivar tickets en `12-kanban.md` y revisarlos en `13-readiness-review.md`. Ajustar el alcance al riesgo y presupuesto; no esperar a elegir hosting ni confundir planificación con servicios ya configurados.
+
 ## Estados
 
 - `pendiente`: aún no trabajado.

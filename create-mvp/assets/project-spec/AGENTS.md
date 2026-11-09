@@ -22,6 +22,13 @@
 - No inventar alcance para llenar vacíos: preguntar o marcar el pendiente y su impacto.
 - Mantener `AGENTS.md` como índice de reglas; ubicar el detalle del producto en `docs/mvp/`.
 
+## Operación desde la definición
+
+- Si el proyecto necesita backend, preguntar desde la entrevista por CI/CD, monitoreo/alertas, logs, seguridad y recuperación aplicable.
+- Registrar decisiones en `docs/mvp/09-stack-backend.md` y `docs/mvp/10-stack-devops.md`, trabajo en `docs/mvp/12-kanban.md` y su trazabilidad en `docs/mvp/13-readiness-review.md`.
+- Adaptar el mínimo al riesgo/presupuesto; cada diferimiento tiene motivo, responsable y momento de resolución. No elegir proveedores o una estrategia de ramas por defecto.
+- Distinguir especificación, implementación y verificación en el entorno real; un documento no demuestra monitoreo activo ni autorización para desplegar.
+
 ## Decisiones técnicas
 
 - Crear un ADR cuando una decisión sea costosa de revertir, tenga alternativas relevantes o afecte varias partes del sistema.

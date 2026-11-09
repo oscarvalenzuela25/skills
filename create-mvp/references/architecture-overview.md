@@ -26,3 +26,5 @@ Leer completos PRD V2, ERD, Sitemap, Route Specs, restricciones de diseño y los
 14. ADR que conviene crear antes o durante la implementación.
 
 Mantener el diseño proporcional al MVP. No convertir decisiones futuras en infraestructura inmediata. Crear un ADR dentro de `docs/architecture/decisions/` cuando una decisión sea costosa de revertir, tenga alternativas relevantes o afecte varias partes del sistema.
+
+Si hay backend, reconciliar la responsabilidad de API/jobs, plataforma y operador siguiendo [backend-operations.md](backend-operations.md). La arquitectura debe ubicar salud, señales, secretos y recuperación del mínimo acordado; no confundir un servicio seleccionado con una capacidad ya disponible.
